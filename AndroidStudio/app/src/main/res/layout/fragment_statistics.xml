@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Article Title -->
+        <TextView
+            android:id="@+id/article_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Article Title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
+
+        <!-- Article Image -->
+        <ImageView
+            android:id="@+id/article_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="Article Image"
+            android:paddingBottom="8dp"/>
+
+        <!-- Article Content -->
+        <TextView
+            android:id="@+id/article_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            android:textSize="16sp"
+            android:paddingBottom="8dp"/>
+
+        <!-- Video Thumbnail and Play Button -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <!-- Video Thumbnail -->
+            <ImageView
+                android:id="@+id/video_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="Video Thumbnail"/>
+
+            <!-- Play Button -->
+            <ImageButton
+                android:id="@+id/play_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:background="@android:color/transparent"
+                android:layout_centerInParent="true"
+                android:contentDescription="Play Video"/>
+
+        </RelativeLayout>
+
+        <!-- Additional Article Text -->
+        <TextView
+            android:id="@+id/additional_article_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Additional content here..."
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</ScrollView>
