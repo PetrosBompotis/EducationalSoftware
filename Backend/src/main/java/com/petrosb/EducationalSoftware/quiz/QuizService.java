@@ -51,7 +51,7 @@ public class QuizService {
 
         Quiz quiz = quizDataAccessService.selectQuizByID(quizId)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "customer with id [%s] not found".formatted(quizId)
+                        "Quiz with id [%s] not found".formatted(quizId)
                 ));
         boolean changes = false;
         //check if attributes need change exists
