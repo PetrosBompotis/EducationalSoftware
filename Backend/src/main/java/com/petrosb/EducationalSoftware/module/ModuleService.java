@@ -29,8 +29,8 @@ public class ModuleService {
 
         Module module = new Module(
                 moduleCreationRequest.title(),
-                moduleCreationRequest.description(),
                 moduleCreationRequest.textContent(),
+                moduleCreationRequest.description(),
                 moduleCreationRequest.imageUrls(),
                 moduleCreationRequest.videoUrl()
         );

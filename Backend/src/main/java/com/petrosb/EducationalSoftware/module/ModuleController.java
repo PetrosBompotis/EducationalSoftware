@@ -1,8 +1,5 @@
 package com.petrosb.EducationalSoftware.module;
 
-import com.petrosb.EducationalSoftware.quiz.Quiz;
-import com.petrosb.EducationalSoftware.quiz.QuizCreationRequest;
-import com.petrosb.EducationalSoftware.quiz.QuizUpdateRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
