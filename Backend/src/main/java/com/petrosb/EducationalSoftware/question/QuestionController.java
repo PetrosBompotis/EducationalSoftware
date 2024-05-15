@@ -1,5 +1,6 @@
 package com.petrosb.EducationalSoftware.question;
 
+import com.petrosb.EducationalSoftware.Level;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,11 @@ public class QuestionController {
     @GetMapping("/quizzes/{quizId}/questions")
     public List<Question> getAllQuestionsByQuizId(@PathVariable(value = "quizId") Long quizId) {
         return questionService.getAllQuestionsByQuizId(quizId);
+    }
+
+    @GetMapping("/questions/{difficultyLevel}")
+    public Question getQuestionByDifficultyLevel(@PathVariable(value = "difficultyLevel") Level difficultyLevel) {
+        return questionService.getQuestionByDifficultyLevel(difficultyLevel);
     }
 
     @PostMapping("/quizzes/{quizId}/questions")

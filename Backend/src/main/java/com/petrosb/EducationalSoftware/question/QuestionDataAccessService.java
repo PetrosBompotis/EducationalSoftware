@@ -1,5 +1,6 @@
 package com.petrosb.EducationalSoftware.question;
 
+import com.petrosb.EducationalSoftware.Level;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public class QuestionDataAccessService {
 
     public List<Question> selectAllQuestionsByQuizId(Long quizId){
         return questionRepository.findByQuizId(quizId);
+    }
+
+    public List<Question> selectAllQuestionsByDifficultyLevel(Level difficultyLevel){
+        return questionRepository.findByDifficultyLevel(difficultyLevel);
     }
 
     public Optional<Question> selectQuestionByID(Long id) {

@@ -1,5 +1,6 @@
 package com.petrosb.EducationalSoftware.question;
 
+import com.petrosb.EducationalSoftware.Level;
 import com.petrosb.EducationalSoftware.exception.RequestValidationException;
 import com.petrosb.EducationalSoftware.exception.ResourceNotFoundException;
 import com.petrosb.EducationalSoftware.quiz.Quiz;
@@ -7,6 +8,7 @@ import com.petrosb.EducationalSoftware.quiz.QuizDataAccessService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class QuestionService {
@@ -23,6 +25,15 @@ public class QuestionService {
             throw new ResourceNotFoundException("Quiz with id [%s] not found".formatted(quizId));
         }
         return questionDataAccessService.selectAllQuestionsByQuizId(quizId);
+    }
+
+    public Question getQuestionByDifficultyLevel(Level difficultyLevel){
+        List<Question> questions = questionDataAccessService.selectAllQuestionsByDifficultyLevel(difficultyLevel);
+        if (questions.isEmpty()) {
+            throw new ResourceNotFoundException("Question with difficultyLevel [%s] not found".formatted(difficultyLevel));
+        }
+        Random rand = new Random();
+        return questions.get(rand.nextInt(questions.size()));
     }
 
     public void addQuestion(QuestionCreationRequest questionCreationRequest, Long quizId){
