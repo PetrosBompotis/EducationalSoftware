@@ -29,25 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="dddddddddddddddddddddddddddddddddddddddddddd
-                ddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddddd
-                dddddddddddddddddddddd
-                dddddddddddddddddddddddd
-                dddddddddddddddddddddddddddd
-                dddddddddddddddddddddddddddddddddddd
-
-                ddddddddddddddddddddddddddddd
-
-                ddddddddddddddddddddddddddddddddddddddddd
-
-                dddddddddddddddddddddddddddd
-
-
-                dddddddddddddddddddddddddddd
-                ddddddddddddddddddddddddddddddddddddddddddddddddddddddd"/>
+                android:text="@string/sampleText"/>
         </LinearLayout>
 
         <LinearLayout
