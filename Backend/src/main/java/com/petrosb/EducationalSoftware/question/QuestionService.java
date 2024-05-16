@@ -27,8 +27,12 @@ public class QuestionService {
         return questionDataAccessService.selectAllQuestionsByQuizId(quizId);
     }
 
-    public Question getQuestionByDifficultyLevel(Level difficultyLevel){
-        List<Question> questions = questionDataAccessService.selectAllQuestionsByDifficultyLevel(difficultyLevel);
+    public Question getQuestionByDifficultyLevelAndQuizId(Level difficultyLevel, Long quizId){
+        if(!quizDataAccessService.existsQuizWithId(quizId)){
+            throw new ResourceNotFoundException("Quiz with id [%s] not found".formatted(quizId));
+        }
+
+        List<Question> questions = questionDataAccessService.selectAllQuestionsByDifficultyLevelAndQuizId(difficultyLevel, quizId);
         if (questions.isEmpty()) {
             throw new ResourceNotFoundException("Question with difficultyLevel [%s] not found".formatted(difficultyLevel));
         }

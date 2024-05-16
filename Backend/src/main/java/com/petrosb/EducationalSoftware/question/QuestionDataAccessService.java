@@ -19,8 +19,8 @@ public class QuestionDataAccessService {
         return questionRepository.findByQuizId(quizId);
     }
 
-    public List<Question> selectAllQuestionsByDifficultyLevel(Level difficultyLevel){
-        return questionRepository.findByDifficultyLevel(difficultyLevel);
+    public List<Question> selectAllQuestionsByDifficultyLevelAndQuizId(Level difficultyLevel, Long quizId){
+        return questionRepository.findByDifficultyLevelAndQuizId(difficultyLevel, quizId);
     }
 
     public Optional<Question> selectQuestionByID(Long id) {

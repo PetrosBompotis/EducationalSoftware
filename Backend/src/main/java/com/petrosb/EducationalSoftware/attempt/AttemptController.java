@@ -19,10 +19,10 @@ public class AttemptController {
     }
 
     @PostMapping("/customers/{customerId}/quizzes/{quizId}/attempts")
-    public void createAttempt(@PathVariable(value = "customerId") Long customerId,
+    public Attempt createAttempt(@PathVariable(value = "customerId") Long customerId,
                                   @PathVariable(value = "quizId") Long quizId,
                                   @RequestBody AttemptCreationRequest attemptCreationRequest) {
-        attemptService.addAttempt(attemptCreationRequest, customerId, quizId);
+        return attemptService.addAttempt(attemptCreationRequest, customerId, quizId);
     }
 
     @DeleteMapping("/attempts/{attemptId}")

@@ -29,7 +29,7 @@ public class AttemptService {
         return attemptDataAccessService.selectAllAttemptsByCustomerId(customerId);
     }
 
-    public void addAttempt(AttemptCreationRequest attemptCreationRequest, Long customerId, Long quizId){
+    public Attempt addAttempt(AttemptCreationRequest attemptCreationRequest, Long customerId, Long quizId){
         Customer customer = customerDataAccessService.selectCustomerByID(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Customer with id [%s] not found".formatted(customerId)
@@ -46,7 +46,7 @@ public class AttemptService {
                 quiz
         );
 
-        attemptDataAccessService.insertAttempt(attempt);
+        return attemptDataAccessService.insertAttempt(attempt);
     }
 
     public void deleteAttemptById(Long attemptId){

@@ -19,9 +19,10 @@ public class QuestionController {
         return questionService.getAllQuestionsByQuizId(quizId);
     }
 
-    @GetMapping("/questions/{difficultyLevel}")
-    public Question getQuestionByDifficultyLevel(@PathVariable(value = "difficultyLevel") Level difficultyLevel) {
-        return questionService.getQuestionByDifficultyLevel(difficultyLevel);
+    @GetMapping("/quizzes/{quizId}/questions/{difficultyLevel}")
+    public Question getQuestionByDifficultyLevelAndQuizId(@PathVariable(value = "quizId") Long quizId,
+                                                 @PathVariable(value = "difficultyLevel") Level difficultyLevel) {
+        return questionService.getQuestionByDifficultyLevelAndQuizId(difficultyLevel, quizId);
     }
 
     @PostMapping("/quizzes/{quizId}/questions")

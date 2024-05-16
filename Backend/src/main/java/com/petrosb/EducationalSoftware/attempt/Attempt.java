@@ -25,7 +25,7 @@ public class Attempt {
     private Long id;
 
     @Column(nullable = false)
-    private Integer score;
+    private Float score;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
@@ -40,7 +40,7 @@ public class Attempt {
     public Attempt() {
     }
 
-    public Attempt(int score, Customer customer, Quiz quiz) {
+    public Attempt(Float score, Customer customer, Quiz quiz) {
         this.score = score;
         this.customer = customer;
         this.quiz = quiz;
@@ -54,11 +54,11 @@ public class Attempt {
         this.id = id;
     }
 
-    public Integer getScore() {
+    public Float getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(Float score) {
         this.score = score;
     }
 

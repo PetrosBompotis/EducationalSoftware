@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findByQuizId(Long quizId);
-    List<Question> findByDifficultyLevel(Level difficultyLevel);
+    List<Question> findByDifficultyLevelAndQuizId(Level difficultyLevel, Long quizId);
     boolean existsQuestionById(Long id);
 }

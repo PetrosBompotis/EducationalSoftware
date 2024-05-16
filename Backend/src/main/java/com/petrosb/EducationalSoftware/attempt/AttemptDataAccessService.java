@@ -21,8 +21,8 @@ public class AttemptDataAccessService {
         return attemptRepository.findById(id);
     }
 
-    public void insertAttempt(Attempt attempt) {
-        attemptRepository.save(attempt);
+    public Attempt insertAttempt(Attempt attempt) {
+        return attemptRepository.save(attempt);
     }
 
     public boolean existsAttemptWithId(Long id) {
