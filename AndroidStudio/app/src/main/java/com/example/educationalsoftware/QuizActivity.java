@@ -1,6 +1,7 @@
 package com.example.educationalsoftware;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +15,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -35,6 +38,9 @@ public class QuizActivity extends AppCompatActivity {
     private RadioGroup choicesRadioGroup;
     private RadioButton choice1RadioButton, choice2RadioButton, choice3RadioButton;
     private String correctAnswer;
+    private Long quizId, attemptId, questionId;
+    private Integer questionCounter;
+    private Float score, correctAnswersCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +57,24 @@ public class QuizActivity extends AppCompatActivity {
         choice2RadioButton = findViewById(R.id.choice_2);
         choice3RadioButton = findViewById(R.id.choice_3);
         correctAnswer = "";
+        questionCounter = 0;
+        correctAnswersCounter = 0.0F;
+        initializeExtras();
 
+        createAttempt();
         loadRandomQuestionBasedOnDifficultyLevel();
+    }
+
+    private void initializeExtras() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            quizId = extras.getLong("quizId");
+        }
     }
 
     private void loadRandomQuestionBasedOnDifficultyLevel(){
         String difficultyLevel = sharedPreferences.getString("level", "LOW");
-        String url = "http://10.0.2.2:8080/api/v1/questions/" + difficultyLevel;
+        String url = "http://10.0.2.2:8080/api/v1/quizzes/" + quizId + "/questions/" + difficultyLevel;
         String accessToken = sharedPreferences.getString("accessToken", "");
 
         Map<String, String> headers = new HashMap<>();
@@ -76,6 +93,7 @@ public class QuizActivity extends AppCompatActivity {
                             String choice2 = response.getString("choice2");
                             String choice3 = response.getString("choice3");
                             correctAnswer = response.getString("correctAnswer");
+                            questionId = response.getLong("id");
 
                             // Update UI with the fetched data
                             updateUI(questionText, choice1, choice2, choice3);
@@ -119,15 +137,117 @@ public class QuizActivity extends AppCompatActivity {
 
             // Check if the selected choice is correct
             if (selectedChoice.equals(correctAnswer)) {
+                saveAnswer(selectedChoice, true);
+                questionCounter += 1;
+                correctAnswersCounter += 1;
+                questionCounterCheck();
                 increaseDifficulty();
+                loadRandomQuestionBasedOnDifficultyLevel();
                 Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
             } else {
+                saveAnswer(selectedChoice, false);
+                questionCounter += 1;
+                questionCounterCheck();
                 decreaseDifficulty();
+                loadRandomQuestionBasedOnDifficultyLevel();
                 Toast.makeText(QuizActivity.this, "Incorrect. Try again.", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(QuizActivity.this, "Please select an answer.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void questionCounterCheck() {
+        if (questionCounter == 3){
+            score = (correctAnswersCounter/3);
+            updateAttempt();
+            Intent intent = new Intent(this, QuizResultActivity.class);
+            intent.putExtra("score", score);
+            startActivity(intent);
+        }
+    }
+
+    private void updateAttempt() {
+        String url = "http://10.0.2.2:8080/api/v1/attempts/"+attemptId;
+
+        String accessToken = sharedPreferences.getString("accessToken", "");
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + accessToken);
+
+        JSONObject requestBody = new JSONObject();
+        try {
+            requestBody.put("score", score);
+        } catch (JSONException e) {
+            Log.e("updateAttempt", "Error creating JSON request body: " + e.getMessage());
+            return;
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url,
+                requestBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("updateAttempt", "Answer created!");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("updateAttempt", "Error creating answer: " + error.getMessage());
+            }
+        }){
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                Log.d("updateAttempt", "Success block");
+                return Response.success(new JSONObject(), HttpHeaderParser.parseCacheHeaders(response));
+            }
+            @Override
+            public Map<String, String> getHeaders() {
+                return headers;
+            }
+        };
+
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    private void saveAnswer(String selectedChoice, Boolean isCorrect) {
+        String url = "http://10.0.2.2:8080/api/v1/attempts/"+attemptId+"/questions/"+questionId+"/answers";
+
+        String accessToken = sharedPreferences.getString("accessToken", "");
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + accessToken);
+
+        JSONObject requestBody = new JSONObject();
+        try {
+            requestBody.put("userAnswer", selectedChoice);
+            requestBody.put("isCorrect", isCorrect);
+        } catch (JSONException e) {
+            Log.e("createAnswer", "Error creating JSON request body: " + e.getMessage());
+            return;
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,
+                requestBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("createAnswer", "Answer created!");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("createAnswer", "Error creating answer: " + error.getMessage());
+            }
+        }){
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                Log.d("createAnswer", "Success block");
+                return Response.success(new JSONObject(), HttpHeaderParser.parseCacheHeaders(response));
+            }
+            @Override
+            public Map<String, String> getHeaders() {
+                return headers;
+            }
+        };
+
+        requestQueue.add(jsonObjectRequest);
     }
 
     public void increaseDifficulty() {
@@ -138,9 +258,11 @@ public class QuizActivity extends AppCompatActivity {
             case "LOW":
                 editor.putString("level", "MEDIUM");
                 editor.apply();
+                break;
             case "MEDIUM":
                 editor.putString("level", "HIGH");
                 editor.apply();
+                break;
             default:
                 editor.putString("level", "HIGH");
                 editor.apply();  // Keep at 'hard'
@@ -155,12 +277,59 @@ public class QuizActivity extends AppCompatActivity {
             case "HIGH":
                 editor.putString("level", "MEDIUM");
                 editor.apply();
+                break;
             case "MEDIUM":
                 editor.putString("level", "LOW");
                 editor.apply();
+                break;
             default:
                 editor.putString("level", "LOW");
                 editor.apply();  // Keep at 'easy'
         }
     }
+
+    private void createAttempt(){
+        Long customerId = sharedPreferences.getLong("id", 1);
+        String url = "http://10.0.2.2:8080/api/v1/customers/" + customerId + "/quizzes/" + quizId + "/attempts";
+
+        String accessToken = sharedPreferences.getString("accessToken", "");
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + accessToken);
+
+        JSONObject requestBody = new JSONObject();
+        try {
+            requestBody.put("score", 120.0);
+        } catch (JSONException e) {
+            Log.e("createAttempt", "Error creating JSON request body: " + e.getMessage());
+            return;
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,
+                requestBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    attemptId = response.getLong("id");
+                } catch (JSONException e) {
+                    Log.e("createAttempt", "JSON parsing error: " + e.getMessage());
+                    Toast.makeText(QuizActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
+                }
+                Log.d("createAttempt", "Attempt created!");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("createAttempt", "Error creating attempt: " + error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() {
+                return headers;
+            }
+        };
+
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
 }

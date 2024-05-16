@@ -1,9 +1,13 @@
 package com.example.educationalsoftware;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -19,6 +23,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
     private String textContent, title, videoUrl;
     private TextView moduleDetailTitleTextView, moduleContentTextView;
     private ImageView moduleImageView1, moduleImageView2;
+    private Button button;
     private VideoView moduleVideoView;
 
     @Override
@@ -27,6 +32,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_module_detail);
         initViews();
         initializeExtras();
+        setUpListeners();
     }
 
     private void initViews() {
@@ -35,6 +41,18 @@ public class ModuleDetailActivity extends AppCompatActivity {
         //moduleImageView1 = findViewById(R.id.moduleImageView1);
         //moduleImageView2 = findViewById(R.id.moduleImageView2);
         moduleVideoView = findViewById(R.id.moduleVideoView);
+        button = findViewById(R.id.submitr_button);
+    }
+
+    private void setUpListeners(){
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ModuleDetailActivity.this, QuizActivity.class);
+                intent.putExtra("quizId", id);
+                startActivity(intent);
+            }
+        });
     }
 
 
