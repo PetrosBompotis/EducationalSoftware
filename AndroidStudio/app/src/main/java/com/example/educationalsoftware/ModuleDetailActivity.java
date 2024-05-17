@@ -9,12 +9,16 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -41,7 +45,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
         //moduleImageView1 = findViewById(R.id.moduleImageView1);
         //moduleImageView2 = findViewById(R.id.moduleImageView2);
         moduleVideoView = findViewById(R.id.moduleVideoView);
-        button = findViewById(R.id.submitr_button);
+        button = findViewById(R.id.submit_button);
     }
 
     private void setUpListeners(){
@@ -54,7 +58,6 @@ public class ModuleDetailActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void initializeExtras() {
         Bundle extras = getIntent().getExtras();
@@ -70,8 +73,6 @@ public class ModuleDetailActivity extends AppCompatActivity {
                 @Override
                 public Drawable getDrawable(String source) {
                     int drawableId;
-
-                    // Map the image source (URL) to a drawable resource ID
                     switch (source) {
                         case "https://picsum.photos/300":
                             drawableId = R.drawable.exercise; // Replace with your actual drawable resource ID
@@ -87,10 +88,13 @@ public class ModuleDetailActivity extends AppCompatActivity {
                     }
 
                     // Get the Drawable from resources
-                    return getResources().getDrawable(drawableId);
+                    Drawable drawable = ContextCompat.getDrawable(ModuleDetailActivity.this, drawableId);
+                    if (drawable != null) {
+                        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+                    }
+                    return drawable;
                 }
             }, null));
-            // Load images into ImageViews
 
             if (imageUrls != null && !imageUrls.isEmpty()) {
                 //Glide.with(this).load(imageUrls.get(0)).into(moduleImageView1);
@@ -101,7 +105,11 @@ public class ModuleDetailActivity extends AppCompatActivity {
 
             // Set video URI to VideoView
             if (videoUrl != null && !videoUrl.isEmpty()) {
+                MediaController mediaController = new MediaController(this);
+                mediaController.setAnchorView(moduleVideoView);
+                moduleVideoView.setMediaController(mediaController);
                 moduleVideoView.setVideoURI(Uri.parse(videoUrl));
+                moduleVideoView.requestFocus();
                 moduleVideoView.start(); // Start playing the video
             }
         }

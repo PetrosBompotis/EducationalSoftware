@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Quiz Results"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/material_dynamic_neutral0"
         android:layout_marginTop="32dp" />
@@ -25,14 +25,15 @@
         android:layout_centerInParent="true">
 
         <!-- Background Circle -->
+
+        <!-- Score Text -->
+
         <View
             android:id="@+id/background_circle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:background="@drawable/circle_background" />
 
-        <!-- Score Text -->
         <TextView
             android:id="@+id/score_text"
             android:layout_width="wrap_content"
@@ -41,7 +42,7 @@
             android:text="10%"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="@color/design_default_color_on_secondary" />
+            android:textColor="@color/material_dynamic_tertiary10" />
     </RelativeLayout>
 
     <!-- Retry Button -->
@@ -52,9 +53,9 @@
         android:layout_below="@id/circular_progress_container"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
+        android:onClick="retry"
         android:text="Retry"
-        android:textSize="18sp"
-         />
+        android:textSize="18sp" />
 
     <!-- Main Menu Button -->
     <Button
@@ -64,8 +65,8 @@
         android:layout_below="@id/retry_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:onClick="redirectMainMenu"
         android:text="Main Menu"
-        android:textSize="18sp"
-         />
+        android:textSize="18sp" />
 
 </RelativeLayout>

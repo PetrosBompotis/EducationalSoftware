@@ -163,6 +163,7 @@ public class QuizActivity extends AppCompatActivity {
             updateAttempt();
             Intent intent = new Intent(this, QuizResultActivity.class);
             intent.putExtra("score", score);
+            intent.putExtra("quizId", quizId);
             startActivity(intent);
         }
     }

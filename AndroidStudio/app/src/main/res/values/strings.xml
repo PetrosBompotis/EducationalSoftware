@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sampleText">dddddddddddddddddddddddddddddddddddddddddddd ddddddddddddddddddddddddd dddddddddddddddddddddddddddd dddddddddddddddddddddddddddd dddddddddddddddddddddddddddddd dddddddddddddddddddddd dddddddddddddddddddddddd dddddddddddddddddddddddddddd dddddddddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddd dddddddddddddddddddddddddddd dddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddddddddddddddddd</string>
+    <string name="lorem_ipsum"><![CDATA[Lorem ipsum dolor sit amet</b>, consectetur adipiscing elit. Sed et elit eget ligula ultrices tincidunt. Nulla facilisi. Nullam quis enim ac magna iaculis bibendum.]]></string>
 </resources>
