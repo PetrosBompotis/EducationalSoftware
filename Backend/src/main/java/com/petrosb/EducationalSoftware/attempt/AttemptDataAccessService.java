@@ -17,6 +17,10 @@ public class AttemptDataAccessService {
         return attemptRepository.findByCustomerId(customerId);
     }
 
+    public List<Attempt> selectAllAttemptsByCustomerIdAndQuizId(Long customerId, Long quizId){
+        return attemptRepository.findByCustomerIdAndQuizId(customerId, quizId);
+    }
+
     public Optional<Attempt> selectAttemptByID(Long id) {
         return attemptRepository.findById(id);
     }

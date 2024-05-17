@@ -18,6 +18,12 @@ public class AttemptController {
         return attemptService.getAllAttemptsByCustomerId(customerId);
     }
 
+    @GetMapping("/customers/{customerId}/quizzes/{quizId}/attempts")
+    public List<Attempt> getAttemptsByCustomerIdAndQuizId(@PathVariable(value = "customerId") Long customerId,
+                                                          @PathVariable(value = "quizId") Long quizId) {
+        return attemptService.getAttemptsByCustomerIdAndQuizId(customerId, quizId);
+    }
+
     @PostMapping("/customers/{customerId}/quizzes/{quizId}/attempts")
     public Attempt createAttempt(@PathVariable(value = "customerId") Long customerId,
                                   @PathVariable(value = "quizId") Long quizId,

@@ -29,6 +29,18 @@ public class AttemptService {
         return attemptDataAccessService.selectAllAttemptsByCustomerId(customerId);
     }
 
+    public List<Attempt> getAttemptsByCustomerIdAndQuizId(Long customerId, Long quizId) {
+        if(!customerDataAccessService.existsPersonWithId(customerId)){
+            throw new ResourceNotFoundException("Customer with id [%s] not found".formatted(customerId));
+        }
+
+        if(!quizDataAccessService.existsQuizWithId(quizId)){
+            throw new ResourceNotFoundException("Quiz with id [%s] not found".formatted(quizId));
+        }
+
+        return attemptDataAccessService.selectAllAttemptsByCustomerIdAndQuizId(customerId, quizId);
+    }
+
     public Attempt addAttempt(AttemptCreationRequest attemptCreationRequest, Long customerId, Long quizId){
         Customer customer = customerDataAccessService.selectCustomerByID(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException(

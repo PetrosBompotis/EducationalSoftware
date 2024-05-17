@@ -23,7 +23,7 @@ public class Module {
     @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(nullable = false, length = 1500)
+    @Column(nullable = false, length = 15000)
     private String textContent;
 
     @Column(nullable = false, name = "description")

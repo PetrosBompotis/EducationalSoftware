@@ -7,4 +7,5 @@ import java.util.List;
 public interface AttemptRepository extends JpaRepository<Attempt, Long> {
     List<Attempt> findByCustomerId(Long customerId);
     boolean existsAttemptById(Long id);
+    List<Attempt> findByCustomerIdAndQuizId(Long customerId, Long quizId);
 }
