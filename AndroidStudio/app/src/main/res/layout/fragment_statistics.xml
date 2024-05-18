@@ -12,11 +12,10 @@
         android:gravity="center"
         android:padding="16dp">
 
-        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Statistics"
+            android:text="@string/user_statistics"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="#333333"
@@ -47,7 +46,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Attempts"
+                    android:text="@string/total_attempts"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>
@@ -80,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Best Score"
+                    android:text="@string/best_score"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>
@@ -122,7 +121,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Attempts"
+                    android:text="@string/total_attempts"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>
@@ -155,7 +154,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Best Score"
+                    android:text="@string/best_score"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>
@@ -197,7 +196,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Attempts"
+                    android:text="@string/total_attempts"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>
@@ -230,7 +229,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Best Score"
+                    android:text="@string/best_score"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>
@@ -271,7 +270,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Attempts"
+                    android:text="@string/total_attempts"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>
@@ -304,7 +303,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Best Score"
+                    android:text="@string/best_score"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#555555"/>

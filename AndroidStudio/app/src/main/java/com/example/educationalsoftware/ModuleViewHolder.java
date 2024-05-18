@@ -22,7 +22,6 @@ public class ModuleViewHolder extends RecyclerView.ViewHolder implements View.On
         moduleTitleTextView = itemView.findViewById(R.id.moduleTitleTextView);
         moduleDescriptionTextView = itemView.findViewById(R.id.moduleDescriptionTextView);
 
-        // Set click listener for the item
         itemView.setOnClickListener(this);
     }
 
@@ -34,10 +33,10 @@ public class ModuleViewHolder extends RecyclerView.ViewHolder implements View.On
         intent.putExtra("id", module.getId());
         intent.putExtra("title", module.getTitle());
         intent.putExtra("textContent", module.getTextContent());
+        intent.putExtra("extendedTextContent", module.getExtendedTextContent());
         ArrayList<String> imageUrlsArrayList = new ArrayList<>(module.getImageUrls());
         intent.putStringArrayListExtra("imageUrls", imageUrlsArrayList);
         intent.putExtra("videoUrl", module.getVideoUrl());
-        Log.d("ddfffffffff", module.getVideoUrl());
         context.startActivity(intent);
     }
 }

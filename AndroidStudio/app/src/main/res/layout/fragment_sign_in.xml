@@ -7,49 +7,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Login"
-        android:textSize="25dp"
+        android:text="@string/login"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/emailSignInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
-        android:text="Email"/>
+        android:text="@string/email"/>
     <EditText
         android:id="@+id/emailSignInEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
         android:ems="10"/>
     <TextView
         android:id="@+id/passwordSignInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
-        android:layout_marginLeft="100dp" />
+        android:text="@string/password"
+        android:layout_marginStart="100dp" />
     <EditText
         android:id="@+id/passwordSignInEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
         android:inputType="textPassword"
         android:ems="10" />
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:text="Login" />
+        android:layout_marginStart="100dp"
+        android:text="@string/login" />
     <TextView
         android:id="@+id/signUpRedirectTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Not yet registered? Register here"
+        android:text="@string/not_yet_registered_register_here"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="#3F51B5"/>
 </LinearLayout>

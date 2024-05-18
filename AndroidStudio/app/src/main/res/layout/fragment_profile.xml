@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile"
+            android:text="@string/profile"
             android:textStyle="bold"
             android:textSize="30sp"
             android:layout_gravity="center"
@@ -83,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="User information"
+                        android:text="@string/user_information"
                         android:textSize="15sp"
                         android:layout_alignParentStart="true"
                         android:textStyle="bold"/>
@@ -100,7 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:text="Username"
+                        android:text="@string/username"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -125,7 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Email"
+                        android:text="@string/email"
                         android:textSize="15sp"
                         android:layout_alignParentStart="true"
                         android:textStyle="bold"/>
@@ -164,7 +164,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Contact Us"
+                        android:text="@string/contact_us"
                         android:textSize="15sp"
                         android:layout_alignParentStart="true"
                         android:textStyle="bold"/>
@@ -179,16 +179,19 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/ic_launcher_background"/>
 
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/ic_launcher_background"/>
 
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/ic_launcher_background"/>
 
                 </GridLayout>
@@ -199,14 +202,14 @@
             android:id="@+id/signOutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign Out"
+            android:text="@string/sign_out"
             android:layout_marginTop="10dp"/>
 
         <Button
             android:id="@+id/deleteAccountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete Account"
+            android:text="@string/delete_account"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"/>
     </LinearLayout>

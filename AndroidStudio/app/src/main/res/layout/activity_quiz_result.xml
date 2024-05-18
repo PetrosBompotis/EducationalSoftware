@@ -5,28 +5,22 @@
     android:padding="16dp"
     android:background="@color/cardview_light_background">
 
-    <!-- Quiz Title -->
     <TextView
         android:id="@+id/quiz_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Quiz Results"
+        android:text="@string/quiz_results"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/material_dynamic_neutral0"
         android:layout_marginTop="32dp" />
 
-    <!-- Circular Score Progress -->
     <RelativeLayout
         android:id="@+id/circular_progress_container"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerInParent="true">
-
-        <!-- Background Circle -->
-
-        <!-- Score Text -->
 
         <View
             android:id="@+id/background_circle"
@@ -45,7 +39,6 @@
             android:textColor="@color/material_dynamic_tertiary10" />
     </RelativeLayout>
 
-    <!-- Retry Button -->
     <Button
         android:id="@+id/retry_button"
         android:layout_width="wrap_content"
@@ -54,10 +47,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:onClick="retry"
-        android:text="Retry"
-        android:textSize="18sp" />
+        android:text="@string/retry"
+        android:textSize="18sp"
+        android:background="@drawable/fancy_button_background"
+        android:textColor="@android:color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
 
-    <!-- Main Menu Button -->
     <Button
         android:id="@+id/main_menu_button"
         android:layout_width="wrap_content"
@@ -66,7 +64,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:onClick="redirectMainMenu"
-        android:text="Main Menu"
-        android:textSize="18sp" />
+        android:text="@string/main_menu"
+        android:textSize="18sp"
+        android:background="@drawable/fancy_button_background"
+        android:textColor="@android:color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
 
 </RelativeLayout>

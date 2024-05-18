@@ -1,14 +1,13 @@
 package com.example.educationalsoftware;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,9 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +42,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         moduleRecyclerView = view.findViewById(R.id.modulesRecyclerView);
         moduleRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -73,6 +69,7 @@ public class HomeFragment extends Fragment {
                                 Long moduleId = moduleJson.getLong("id");
                                 String title = moduleJson.getString("title");
                                 String textContent = moduleJson.getString("textContent");
+                                String extendedTextContent = moduleJson.getString("extendedTextContent");
                                 String description = moduleJson.getString("description");
                                 JSONArray imagesArray = moduleJson.getJSONArray("imageUrls");
                                 for (int j = 0; j < imagesArray.length(); j++) {
@@ -85,7 +82,7 @@ public class HomeFragment extends Fragment {
                                 }
                                 String videoUrl = moduleJson.getString("videoUrl");
 
-                                modulesList.add(new ModuleResponse(moduleId,title,textContent,description,imageUrlList,videoUrl));
+                                modulesList.add(new ModuleResponse(moduleId,title,textContent,extendedTextContent,description,imageUrlList,videoUrl));
                             }
                             moduleAdapter = new ModuleAdapter(modulesList);
                             moduleRecyclerView.setAdapter(moduleAdapter);

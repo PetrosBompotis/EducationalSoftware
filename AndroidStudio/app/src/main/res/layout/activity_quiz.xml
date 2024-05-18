@@ -52,11 +52,11 @@
 
     <!-- Submit Button -->
     <Button
-        android:id="@+id/submit_button"
+        android:id="@+id/redirectToQuizButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:onClick="submit"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textSize="16sp" />
 </LinearLayout>

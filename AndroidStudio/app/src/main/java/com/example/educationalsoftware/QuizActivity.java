@@ -6,12 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,7 +48,6 @@ public class QuizActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
         requestQueue = Volley.newRequestQueue(this);
 
-        // Initialize views
         questionTextView = findViewById(R.id.question_text);
         choicesRadioGroup = findViewById(R.id.choices_radio_group);
         choice1RadioButton = findViewById(R.id.choice_1);
@@ -59,8 +56,8 @@ public class QuizActivity extends AppCompatActivity {
         correctAnswer = "";
         questionCounter = 0;
         correctAnswersCounter = 0.0F;
-        initializeExtras();
 
+        initializeExtras();
         createAttempt();
         loadRandomQuestionBasedOnDifficultyLevel();
     }
@@ -92,11 +89,12 @@ public class QuizActivity extends AppCompatActivity {
                             String choice1 = response.getString("choice1");
                             String choice2 = response.getString("choice2");
                             String choice3 = response.getString("choice3");
+                            String questionType = response.getString("questionType");
                             correctAnswer = response.getString("correctAnswer");
                             questionId = response.getLong("id");
 
                             // Update UI with the fetched data
-                            updateUI(questionText, choice1, choice2, choice3);
+                            updateUI(questionText, choice1, choice2, choice3, questionType);
                         } catch (JSONException e) {
                             Log.e("QuizActivity", "JSON parsing error: " + e.getMessage());
                             Toast.makeText(QuizActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
@@ -120,11 +118,17 @@ public class QuizActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void updateUI(String questionText, String choice1, String choice2, String choice3) {
+    private void updateUI(String questionText, String choice1, String choice2, String choice3, String questionType) {
         questionTextView.setText(questionText);
         choice1RadioButton.setText(choice1);
         choice2RadioButton.setText(choice2);
-        choice3RadioButton.setText(choice3);
+        if (questionType.equals("TRUE_FALSE")){
+            choice3RadioButton.setVisibility(View.INVISIBLE);
+        }else {
+            choice3RadioButton.setVisibility(View.VISIBLE);
+            choice3RadioButton.setText(choice3);
+        }
+
     }
 
     public void submit(View view){
@@ -331,6 +335,4 @@ public class QuizActivity extends AppCompatActivity {
 
         requestQueue.add(jsonObjectRequest);
     }
-
-
 }
