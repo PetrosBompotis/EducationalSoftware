@@ -26,6 +26,9 @@ public class Module {
     @Column(nullable = false, length = 15000)
     private String textContent;
 
+    @Column(nullable = false, length = 15000)
+    private String extendedTextContent;
+
     @Column(nullable = false, name = "description")
     private String description;
 
@@ -40,9 +43,10 @@ public class Module {
     public Module() {
     }
 
-    public Module(String title, String textContent, String description, List<String> imageUrls, String videoUrl) {
+    public Module(String title, String textContent, String extendedTextContent, String description, List<String> imageUrls, String videoUrl) {
         this.title = title;
         this.textContent = textContent;
+        this.extendedTextContent = extendedTextContent;
         this.description = description;
         this.imageUrls = imageUrls;
         this.videoUrl = videoUrl;
@@ -96,17 +100,12 @@ public class Module {
         this.videoUrl = videoUrl;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Module module = (Module) o;
-        return Objects.equals(id, module.id) && Objects.equals(title, module.title) && Objects.equals(textContent, module.textContent) && Objects.equals(description, module.description) && Objects.equals(imageUrls, module.imageUrls) && Objects.equals(videoUrl, module.videoUrl);
+    public String getExtendedTextContent() {
+        return extendedTextContent;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, textContent, description, imageUrls, videoUrl);
+    public void setExtendedTextContent(String extendedTextContent) {
+        this.extendedTextContent = extendedTextContent;
     }
 
     @Override
@@ -115,9 +114,23 @@ public class Module {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", textContent='" + textContent + '\'' +
+                ", extendedTextContent='" + extendedTextContent + '\'' +
                 ", description='" + description + '\'' +
                 ", imageUrls=" + imageUrls +
                 ", videoUrl='" + videoUrl + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Module module = (Module) o;
+        return Objects.equals(id, module.id) && Objects.equals(title, module.title) && Objects.equals(textContent, module.textContent) && Objects.equals(extendedTextContent, module.extendedTextContent) && Objects.equals(description, module.description) && Objects.equals(imageUrls, module.imageUrls) && Objects.equals(videoUrl, module.videoUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, textContent, extendedTextContent, description, imageUrls, videoUrl);
     }
 }

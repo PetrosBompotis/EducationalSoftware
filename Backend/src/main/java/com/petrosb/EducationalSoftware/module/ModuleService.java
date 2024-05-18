@@ -30,6 +30,7 @@ public class ModuleService {
         Module module = new Module(
                 moduleCreationRequest.title(),
                 moduleCreationRequest.textContent(),
+                moduleCreationRequest.extendedTextContent(),
                 moduleCreationRequest.description(),
                 moduleCreationRequest.imageUrls(),
                 moduleCreationRequest.videoUrl()
@@ -70,6 +71,11 @@ public class ModuleService {
 
         if (updateRequest.textContent() != null && !updateRequest.textContent().equals(module.getTextContent())){
             module.setTextContent(updateRequest.textContent());
+            changes = true;
+        }
+
+        if (updateRequest.extendedTextContent() != null && !updateRequest.extendedTextContent().equals(module.getExtendedTextContent())){
+            module.setExtendedTextContent(updateRequest.extendedTextContent());
             changes = true;
         }
         //otherwise update
