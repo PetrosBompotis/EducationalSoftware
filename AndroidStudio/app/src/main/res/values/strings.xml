@@ -28,4 +28,5 @@
     <string name="user_statistics">User Statistics</string>
     <string name="total_attempts">Total Attempts</string>
     <string name="best_score">Best Score</string>
+    <string name="redirectToQuiz">Ολοκληρώσατε με επιτυχία την ενότητα! Για να ενισχύσετε όσα μάθατε, σας προσκαλούμε να κάνετε ένα γρήγορο κουίζ. Είναι ένας διασκεδαστικός και ελκυστικός τρόπος για να ελέγξετε τις γνώσεις σας.Κάντε κλικ παρακάτω για να ξεκινήσετε το κουίζ!</string>
 </resources>

@@ -23,7 +23,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     private Long id;
     private String textContent, extendedTextContent, title, videoUrl;
-    private TextView moduleDetailTitleTextView, moduleContentTextView;
+    private TextView moduleDetailTitleTextView, moduleContentTextView, redirectToQuizTextView;
     private Button button;
     private VideoView moduleVideoView;
 
@@ -41,6 +41,7 @@ public class ModuleDetailActivity extends AppCompatActivity {
         moduleDetailTitleTextView = findViewById(R.id.moduleDetailTitleTextView);
         moduleContentTextView = findViewById(R.id.moduleContentTextView);
         moduleVideoView = findViewById(R.id.moduleVideoView);
+        redirectToQuizTextView = findViewById(R.id.redirectToQuizTextView);
         button = findViewById(R.id.redirectToQuizButton);
     }
 
@@ -67,20 +68,29 @@ public class ModuleDetailActivity extends AppCompatActivity {
 
             moduleDetailTitleTextView.setText(title);
             moduleContentTextView.setText(Html.fromHtml(
-                    sharedPreferences.getString("level", "LOW").equals("HIGH") ? textContent : extendedTextContent,
+                    sharedPreferences.getString("level", "LOW").equals("HIGH") ? extendedTextContent : textContent,
                     new Html.ImageGetter() {
                 @Override
                 public Drawable getDrawable(String source) {
                     int drawableId;
                     switch (source) {
-                        case "https://picsum.photos/300":
-                            drawableId = R.drawable.exercise; // Replace with your actual drawable resource ID
+                        case "enotita1_eikona1":
+                            drawableId = R.drawable.outputonlinepngtools2; // Replace with your actual drawable resource ID
                             break;
-                        case "https://picsum.photos/200":
-                            drawableId = R.drawable.exercise; // Replace with your actual drawable resource ID
+                        case "enotita1_eikona2":
+                            drawableId = R.drawable.outputonlinepngtools; // Replace with your actual drawable resource ID
                             break;
-                        case "https://picsum.photos/id/237/200/300":
-                            drawableId = R.drawable.exercise; // Replace with your actual drawable resource ID
+                        case "enotita2_eikona1":
+                            drawableId = R.drawable.outputonlinepngtools1; // Replace with your actual drawable resource ID
+                            break;
+                        case "enotita2_eikona2":
+                            drawableId = R.drawable.outputonlinepngtools5; // Replace with your actual drawable resource ID
+                            break;
+                        case "enotita3_eikona1":
+                            drawableId = R.drawable.outputonlinepngtools3; // Replace with your actual drawable resource ID
+                            break;
+                        case "enotita3_eikona2":
+                            drawableId = R.drawable.outputonlinepngtools4; // Replace with your actual drawable resource ID
                             break;
                         default:
                             return null; // No matching image found
@@ -94,6 +104,11 @@ public class ModuleDetailActivity extends AppCompatActivity {
                     return drawable;
                 }
             }, null));
+
+            if(id == 4){
+                moduleVideoView.setVisibility(View.GONE);
+                redirectToQuizTextView.setVisibility(View.GONE);
+            }
 
             if (videoUrl != null && !videoUrl.isEmpty()) {
                 MediaController mediaController = new MediaController(this);
