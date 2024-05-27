@@ -88,6 +88,11 @@ public class QuestionService {
             question.setCorrectAnswer(updateRequest.correctAnswer());
             changes = true;
         }
+
+        if (updateRequest.questionType() != null && !updateRequest.questionType().equals(question.getQuestionType())){
+            question.setQuestionType(updateRequest.questionType());
+            changes = true;
+        }
         //otherwise update
         if (!changes){
             throw new RequestValidationException("no data changes found");

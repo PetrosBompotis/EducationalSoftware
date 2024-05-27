@@ -37,7 +37,8 @@ public class SecurityFilterChainConfig {
                                 .requestMatchers(HttpMethod.POST,
                                         "/api/v1/customers",
                                         "/api/v1/auth/login",
-                                        "/api/v1/auth/validate-token")
+                                        "/api/v1/auth/validate-token",
+                                        "/h2-console/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated())
