@@ -107,7 +107,11 @@ public class SignInFragment extends Fragment {
                     String level = customerDTO.getString("level");
                     mainActivity.saveLoginDataToSharedPreferences(accessToken, id, name, email, level);
                     Log.d("SignIn", "Success block");
-                    mainActivity.redirectToUserActivity();
+                    if (!mainActivity.sharedPreferences.getBoolean("isRegistered", false)){
+                        mainActivity.redirectToRecognitionQuizActivity();
+                    }else {
+                        mainActivity.redirectToUserActivity();
+                    }
                 } catch (JSONException e) {
                     Log.e("SignIn", "Error parsing JSON response: " + e.getMessage());
                 }

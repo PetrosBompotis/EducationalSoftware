@@ -111,6 +111,7 @@ public class SignUpFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 Log.d("Signup", "User profile created!");
                 mainActivity.redirectToSignIn();
+                mainActivity.saveIsRegistered(false);
             }
         }, new Response.ErrorListener() {
             @Override

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/measurementsFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1EAFF"
+    tools:context=".RecognitionQuizActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/welcome_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcomeText"
+            android:textSize="24sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/welcome_text"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/startQuizButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:onClick="start"
+            android:text="@string/start"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/question_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Έχεις ακούσει ποτέ για την Επίδαυρο;"
+            android:textSize="26sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Multiple Choice Options -->
+        <RadioGroup
+            android:id="@+id/choices_radio_group1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/choice1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ναι"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/choice2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Όχι"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/choice3_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Δεν είμαι σίγουρος/η"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+        </RadioGroup>
+
+        <!-- Question Text -->
+        <TextView
+            android:id="@+id/question_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Έχεις επισκεφτεί ποτέ το αρχαίο θέατρο της Επιδαύρου;"
+            android:textSize="26sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Multiple Choice Options -->
+        <RadioGroup
+            android:id="@+id/choices_radio_group2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/choice1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ναι"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/choice2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Οχι"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/choice3_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Δεν θυμάμαι"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+        </RadioGroup>
+
+        <!-- Question Text -->
+        <TextView
+            android:id="@+id/question_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Τι φαντάζεσαι ότι μπορείς να δεις στην Επίδαυρο;"
+            android:textSize="26sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Multiple Choice Options -->
+        <RadioGroup
+            android:id="@+id/choices_radio_group3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/choice1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="α. Αρχαία αγάλματα και τέχνες"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/choice2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="β. Αρχαία μνημεία και θέατρα"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/choice3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="γ. Αρχαία σπίτια και κτήρια"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"/>
+        </RadioGroup>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:onClick="submit"
+            android:text="@string/submit"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</ScrollView>

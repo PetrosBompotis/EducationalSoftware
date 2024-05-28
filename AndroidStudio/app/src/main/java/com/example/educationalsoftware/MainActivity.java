@@ -98,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void redirectToRecognitionQuizActivity(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isRegistered", true);
+        editor.apply();
+        Intent intent = new Intent(this, RecognitionQuizActivity.class);
+        startActivity(intent);
+    }
+
     public void saveLoginDataToSharedPreferences(String accessToken, Long id, String name, String email, String level) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("accessToken", accessToken);
@@ -105,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("name", name);
         editor.putString("email", email);
         editor.putString("level", level);
+        editor.apply();
+    }
+
+    public void saveIsRegistered(Boolean isRegistered){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isRegistered", isRegistered);
         editor.apply();
     }
 }
