@@ -7,41 +7,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/login"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/emailSignInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="20dp"
+        android:textSize="22sp"
         android:text="@string/email"/>
     <EditText
         android:id="@+id/emailSignInEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:ems="10"/>
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="20dp"
+        android:ems="13"/>
     <TextView
         android:id="@+id/passwordSignInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="22sp"
         android:text="@string/password"
-        android:layout_marginStart="100dp" />
+        android:layout_marginStart="70dp" />
     <EditText
         android:id="@+id/passwordSignInEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="70dp"
         android:inputType="textPassword"
-        android:ems="10" />
+        android:layout_marginBottom="20dp"
+        android:ems="13" />
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="140dp"
+        android:textSize="22sp"
         android:text="@string/login" />
     <TextView
         android:id="@+id/signUpRedirectTextView"

@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/measurementsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/measurementsFragment"
+    android:background="#ACE1AF"
     tools:context=".HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         android:padding="15dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/modules"
-            android:layout_marginBottom="25sp"
-            android:textStyle="bold"
-            android:textSize="30sp"
             android:layout_gravity="center"
-            android:textColor="@color/black"/>
+            android:layout_marginBottom="25sp"
+            android:text="@string/modules"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/modulesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
 </ScrollView>

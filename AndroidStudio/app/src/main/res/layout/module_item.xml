@@ -21,15 +21,15 @@
             android:id="@+id/moduleTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:text="Exercise Name Exercise NameExercise Name" />
+            android:text="Module Name " />
 
         <TextView
             android:id="@+id/moduleDescriptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="moduleDescriptionTextView"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 </LinearLayout>

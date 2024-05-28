@@ -4,13 +4,13 @@
     <item
         android:icon="@drawable/baseline_home_24"
         android:id="@+id/homePage"
-        android:title="Home"/>
+        android:title="Αρχική"/>
     <item
         android:icon="@drawable/baseline_bar_chart_24"
         android:id="@+id/statistics"
-        android:title="Statistics"/>
+        android:title="Στατιστικά"/>
     <item
         android:icon="@drawable/baseline_person_24"
         android:id="@+id/profile"
-        android:title="Profile"/>
+        android:title="Προφίλ"/>
 </menu>

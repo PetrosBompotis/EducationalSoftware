@@ -37,7 +37,7 @@ public class QuizActivity extends AppCompatActivity {
     private RadioButton choice1RadioButton, choice2RadioButton, choice3RadioButton;
     private String correctAnswer;
     private Long quizId, attemptId, questionId;
-    private Integer questionCounter;
+    private Integer questionCounter, scoreInt;
     private Float score, correctAnswersCounter;
 
     @Override
@@ -163,10 +163,11 @@ public class QuizActivity extends AppCompatActivity {
 
     private void questionCounterCheck() {
         if (questionCounter == 3){
-            score = (correctAnswersCounter/3);
+            score = (correctAnswersCounter/3)*100;
+            scoreInt = Math.round(score);
             updateAttempt();
             Intent intent = new Intent(this, QuizResultActivity.class);
-            intent.putExtra("score", score);
+            intent.putExtra("score", scoreInt);
             intent.putExtra("quizId", quizId);
             startActivity(intent);
         }
@@ -181,7 +182,7 @@ public class QuizActivity extends AppCompatActivity {
 
         JSONObject requestBody = new JSONObject();
         try {
-            requestBody.put("score", score);
+            requestBody.put("score", scoreInt);
         } catch (JSONException e) {
             Log.e("updateAttempt", "Error creating JSON request body: " + e.getMessage());
             return;
