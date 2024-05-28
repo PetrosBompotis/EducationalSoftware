@@ -457,3 +457,6 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:840)
+2024-05-27 17:35:55.872577+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION CHARACTER VARYING(255)": "U&'\\03a0\\03b5\\03c1\\03b9\\03b3\\03c1\\03ac\\03c6\\03b5\\03b9 \\03c4\\03b7 \\03c3\\03b7\\03bc... (262)"; SQL statement:
+update module set description=?,extended_text_content=?,text_content=?,title=?,video_url=? where id=? [22001-224]
