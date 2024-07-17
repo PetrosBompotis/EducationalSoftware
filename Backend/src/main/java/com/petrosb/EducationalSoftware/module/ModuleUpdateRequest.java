@@ -4,6 +4,7 @@ public record ModuleUpdateRequest(
         String title,
         String description,
         String textContent,
-        String extendedTextContent
+        String extendedTextContent,
+        String videoUrl
 ) {
 }

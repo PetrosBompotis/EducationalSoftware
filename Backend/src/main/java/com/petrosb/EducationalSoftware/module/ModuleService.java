@@ -78,6 +78,11 @@ public class ModuleService {
             module.setExtendedTextContent(updateRequest.extendedTextContent());
             changes = true;
         }
+
+        if (updateRequest.videoUrl() != null && !updateRequest.videoUrl().equals(module.getVideoUrl())){
+            module.setVideoUrl(updateRequest.videoUrl());
+            changes = true;
+        }
         //otherwise update
 
         if (!changes){
